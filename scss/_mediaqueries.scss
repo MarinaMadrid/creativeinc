@@ -1,0 +1,121 @@
+@media screen and (max-width: 1200px) {
+    .main__whoweare__text{
+        width: 100%;
+        height: 40vh;
+    }
+
+    footer {
+        padding-right: 5em; 
+        padding-left: 5em; 
+
+        p:nth-child(1){
+            max-width: 80em;
+        }
+    }
+
+    .footer__text p {
+        padding-right: 5em;
+        padding-left: 5em;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__main {
+      padding: 3em; 
+    }
+
+    .main__whoweare__text{
+        width: 100%;
+        height: 40vh;
+    }
+
+    .main__whoweare__photo{
+        display: none;
+    }      
+    
+
+    .main__portfolio{
+        @include flexbox(column);
+    }
+
+    .main__like{
+        padding: 2em;
+
+        h2{
+            font-size: 2.5em;
+          }
+        
+        p{
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    footer{
+        p{
+            margin-right: 1em;
+        }
+    }
+
+    .footer__text p {
+        margin-bottom: 0.5em; 
+    }
+}
+
+@media (max-width: 576px) {
+    nav {
+        @include flexbox(column);
+        text-align: center;
+
+        a {
+        margin-right: 0; 
+        margin-bottom: 1em; 
+        }
+    }
+
+    .header__main {
+        button {
+            margin-top: 1em; 
+        }
+
+        p {
+            font-size: 1.3em; 
+        }
+    }
+
+    .main__whoweare__text{
+        width: 100%;
+        height: 40vh;
+    }
+
+    .main__whoweare__photo{
+        display: none;
+    }      
+    
+}
+
+@media screen and (max-width: 480px) {
+    .main__whoweare__text{
+        width: 100%;
+        height: 40vh;
+    }
+
+    .main__whoweare__photo{
+        display: none;
+    }      
+    
+
+    .main__like{
+        h2{
+            font-size: 2em;
+        }
+
+        p{
+            font-size: 1.5em;
+        }
+
+        button{
+            padding: 0.3em 1em;
+        }
+    }
+}

@@ -1,0 +1,245 @@
+*,/*todos los elementos*/
+*::before, /*para asegurar que los elementos generados por CSS de forma dinámica también sigan estas reglas*/
+*::after {
+  box-sizing: border-box; /* sin esta regla, el ancho y alto de un elemento se calcula sin tener en cuenta el relleno y el borde*/
+  margin: 0;  /* para garantizar que no haya márgenes o rellenos no deseados aplicados de forma predeterminada por el navegador*/
+  padding: 0;
+}
+
+body{
+  font-family: Raleway;
+  color: map-get($colores, white-color);
+  @include grid("0.01fr 1fr", "auto 1fr auto");
+  height: 100vh;
+}
+
+button{
+  background-color: transparent;
+}
+
+.button__green{
+  border: 1px solid map-get($colores, green-color);
+  color: map-get($colores, green-color);
+}
+
+//HEADER------------------------------------------------------------------------------------------------
+header{
+  background-image: $fondo;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 50em;
+  width: 100%;
+
+  nav{
+    @include flexbox(row, space-between, center);
+    padding: 1em;
+
+    span{
+      color: map-get($colores, green-color);
+      font-weight: bolder;
+    }
+  
+    a{
+      text-decoration: none;
+      color: map-get($colores, white-color);
+      margin-right: 1em;
+      font-weight: bolder;
+      
+      &:hover{
+        color: map-get($colores, white-color-hover);
+      }
+    }
+  }
+}
+
+.header__main{
+  @include flexbox(column);
+  padding: 10em;
+
+  button{
+    margin-top: 8em;
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+
+    &:hover{
+      background-color: map-get($colores, green-color);
+      color: map-get($colores, black-color);
+      cursor: pointer;
+    }
+  }
+
+  p{
+    font-size: 2em;
+  }
+}
+
+/*MAIN----------------------------------------------------------------------*/
+/*WHO ARE YOU---------------------------------------------------------------*/
+.main__whoweare__text{
+  background-color:  map-get($colores, black-color);
+  min-height: 8em;
+  width: 60vh;
+  height: 40vh;
+  
+  span{
+    color: map-get($colores, green-color);
+
+  }
+  
+  #cuadro{
+    border: 0.1em solid map-get($colores, green-color);
+    padding: 1em;
+  }
+}
+
+.main__whoweare__photo{
+  padding-right: 20em;
+  padding-left: 20em;
+
+  figure{
+    width: 100vh;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: auto; 
+    display: block; 
+    transform: scale(1.4); 
+  }
+
+  figcaption{
+    color: map-get($colores, black-color);
+    text-align: center;
+    margin-top: 5em;
+    font-size: 2em;
+  }
+}
+
+/*PORTFOLIO--------------------------------------------------------*/
+.main__portfolio{
+  @include flexbox();
+  flex-wrap: wrap;
+}
+
+.main__portfolio__item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; 
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(map-get($colores, black-color), 0.7);
+    color: map-get($colores, white-color);
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+
+    p,
+    button {
+      margin: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; 
+
+    p,
+    button {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  button{
+    padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+
+    &:hover{
+      background-color: map-get($colores, green-color);
+      color: map-get($colores, black-color);
+    }
+  }
+}
+
+
+/*LIKE--------------------------------------------------------------*/
+.main__like{
+  @include flexbox(column);
+  background-color: map-get($colores, green-color);
+  color: map-get($colores, black-color);
+  padding: 4em;
+
+  h2{
+    font-size: 3em;
+  }
+
+  p{
+    font-size: 2.5em;
+    margin-bottom: 1em;
+  }
+
+  button{
+    border: 1px solid map-get($colores, black-color);
+    padding: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+
+    &:hover{
+      background-color: map-get($colores, black-color);
+      color: map-get($colores, green-color);
+    }
+  }
+}
+
+/*FOOTER------------------------------------------------------------*/
+footer{
+  @include flexbox(row, flex-start, space-between);
+  background-color: map-get($colores, black-color);
+  min-height: 20em;
+  padding: 5em;
+  padding-right: 20em;
+  padding-left: 20em;
+
+  p:nth-child(1){
+    max-width: 50em;
+  }
+
+  span{
+    font-weight: bolder;
+  }
+
+  p{
+    margin-right: 4em;
+  }
+
+  .footer__text {
+    cursor: pointer;
+    
+    p{
+      width: 10em;
+    }
+  }
+}
